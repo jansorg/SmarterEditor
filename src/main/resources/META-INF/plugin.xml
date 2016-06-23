@@ -1,0 +1,234 @@
+<!--
+  ~ Copyright 2010 Joachim Ansorg, mail@ansorg-it.com
+  ~ File: plugin.xml, Class: plugin.xml
+  ~ Last modified: 2010-06-03
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<idea-plugin version="2">
+    <name>SmarterEditor</name>
+
+    <change-notes>
+        <![CDATA[
+    <html>
+        <b>Changes in this version:</b><br/>
+        <ul>
+            <li>Javascript string splitting improved</li>
+        </ul>
+    </html>
+    ]]> </change-notes>
+
+    <description><![CDATA[
+  <html>
+    <b>Smarten up the editor with new editor actions.</b>
+    <br>
+    This plugin makes you more productive in the editor. It supports some frequently used actions with the press of a key.
+    You can easily select, format and navigate in selections. And it allows to to split literals at the current position without
+    breaking your code!
+
+    <br/>
+    <br/>
+    It relies on navigation contexts. A navigation context is defined as:
+    <ul>
+      <li>Block statement: If, Switch or loops statements</li>
+      <li>Method definition</li>
+      <li>Class definition</li>
+      <li>XML tag</li>
+    </ul>
+
+    <p>This plugin saves you from unnecessary caret movements.</p>
+
+    <br><b>Supported languages:</b>
+    <ul>
+        <li>Java</li>
+        <li>JavaScript</li>
+        <li>CSS</li>
+        <li>XML</li>
+        <li>Bash (BashSupport plugin)</li>
+        <li>SQL (only certain dialects)</li>
+        <li>PHP</li>
+    </ul>
+
+    <br><b>Split the current string literal at caret or around selection</b>
+    <p>
+          Press <i>alt + PLUS</i> / Edit: Smart split. This action splits a string into two parts and positions the
+          caret between two parts.
+          For example: the string "abcd" is turned into "a" + "bc" + "d" if "bc" was selected.
+
+          <br>
+          <i>Useful examples:</i>
+          <ul>
+            <li>Working on Java code: simply split a string into two parts and enter a variable in between</li>
+          </ul>
+    </p>
+
+    <br><b>Jump to the start of a navigation block</b>
+    <p>
+          Press <i>ctrl + alt + HOME</i> / Edit: Smart home. This action moves the editor caret to the beginning of
+          the next parent navigation context.
+          <br>
+          <i>Useful examples:</i>
+          <ul>
+<li>Working on a Java loop statement: Use this action to jump to the loop beginning.</li>
+<li>Working on XML tag body: Use this action to directly jump to the tag definition. Press again to jump to the parent tag definition.</li>
+          </ul>
+    </p>
+
+    <br><b>Jump to the end of a navigation block</b>
+    <p>
+          Press <i>ctrl + alt + END</i> / Edit: Smart end. This action moves the editor caret to the end of
+          the next parent navigation context.
+
+          <br>
+          <i>Useful examples:</i>
+          <ul>
+<li>Working on a Java loop in a method: Use once to add code after the loop, press another time to move after the method to add more class level code.</li>
+<li>Working on XML tag body: Press to add another tag after the current one. Press again to move after the parent tag.</li>
+          </ul>
+    </p>
+
+
+    <br><b>Format a navigation block</b>
+    <p>
+          Press <i>ctrl + alt + shift + F</i> / Edit: Format favourite. This action reformats the next parent
+          navigation context according to the code style settings. It puts a selection on the reformatted text.
+          It can be called multiple times to reformat the next parent context.
+          <br>
+          Before you needed to press ctrl+w multiple times, then ctrl+alt+L and confirm the message box.
+
+          <br>
+          <i>Useful examples:</i>
+          <ul>
+<li>Working on a Java method: If you want to reduce whitespace changes just reformat the current method by calling this action.</li>
+<li>Working on XML tag body: Reformat the current tag and child context by calling this from anywhere on the first level below the tag.</li>
+          </ul>
+    </p>
+
+    <br><b>Select a navigation block</b>
+    <p>
+          Press <i>ctrl + alt + shift + D</i> / Edit: Select favourite. This action select the next parent
+          navigation context. It can be called multiple times to select the next parent context.
+          <br>
+          Before you needed to press ctrl+w multiple times, which works on a much finer grained model.
+
+          <br>
+          <i>Useful examples:</i>
+          <ul>
+<li>Working on a Java code: Select code on a more coarse grained model, e.g. anonymous class, then the method, then the inner class, then the outer class.</li>
+<li>Working on XML tag body: Copy all sibilings and the parent tag by calling this action twice and then <i>ctrl + c</i> </li>
+          </ul>
+    </p>
+
+    <br>
+    <b>This is an early release of this plugin. Please vote and provide feedback to help!</b>
+  </html>
+  ]]>
+    </description>
+
+    <version>0.10.0</version>
+    <vendor url="http://www.ansorg-it.com/" email="mail@ansorg-it.com">Joachim Ansorg</vendor>
+    <idea-version since-build="145.0" />
+    <category>Code Editing</category>
+
+    <!-- Mark the plugin as compatible with RubyMine and other products based on the IntelliJ platform -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <application-components>
+        <component>
+            <implementation-class>com.ansorgit.smarter.configuration.SmartEditorConfigurable</implementation-class>
+        </component>
+
+        <component>
+            <implementation-class>com.ansorgit.smarter.configuration.SmarterEditorSettingsComponent</implementation-class>
+        </component>
+    </application-components>
+
+    <project-components>
+    </project-components>
+
+    <actions>
+        <action id="EditorSelectFavourite" class="com.ansorgit.smarter.selectFavourite.SelectFavouriteAction"
+                text="Select favourite"
+                description="Select your favourite tree structure element in the editor">
+            <add-to-group group-id="EditMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt D"/>
+        </action>
+
+        <action id="EditorSelectFavouriteContent"
+                class="com.ansorgit.smarter.selectFavouriteContent.SelectFavouriteContentAction"
+                text="Select favourite content"
+                description="Select the content of your favourite tree structure element in the editor">
+            <add-to-group group-id="EditMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl C"/>
+        </action>
+
+        <action id="FormatElement" class="com.ansorgit.smarter.formatFavourite.FormatElementAction"
+                text="Format favourite"
+                description="Format your favourite tree structure element in the editor">
+            <add-to-group group-id="EditMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt F"/>
+        </action>
+
+        <action id="SmartHome" class="com.ansorgit.smarter.smartHome.SmartHomeAction" text="Smart home"
+                description="Smart HOME action, jumps to the start of the current block or selection, if available">
+            <add-to-group group-id="EditMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt HOME"/>
+        </action>
+
+        <action id="SmartEnd" class="com.ansorgit.smarter.smartEnd.SmartEndAction" text="Smart end"
+                description="Smart END action, jumps to the end of the current block or selection, if available">
+            <add-to-group group-id="EditMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt END"/>
+        </action>
+
+        <action id="SmartSplit" class="com.ansorgit.smarter.smartSplit.SmartSplitAction" text="Split string"
+                description="Split a string at the current caret position or around current selection">
+            <add-to-group group-id="EditMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt PLUS"/>
+        </action>
+
+        <action id="SortSelectedLines" class="com.ansorgit.smarter.sortSelection.SortSelectionAction"
+                text="Sort selected lines"
+                description="Sorts the currently selected lines. Calling on an already sorted selection it reverses the order.">
+            <add-to-group group-id="EditMenu" anchor="last"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <editorActionHandler implementationClass="com.ansorgit.smarter.selectFavourite.SelectFavouriteHandler"
+                             action="EditorSelectFavourite"/>
+
+        <editorActionHandler
+                implementationClass="com.ansorgit.smarter.selectFavouriteContent.SelectFavouriteContentHandler"
+                action="EditorSelectFavouriteContent"/>
+
+        <editorActionHandler implementationClass="com.ansorgit.smarter.formatFavourite.FormatElementHandler"
+                             action="FormatElement"/>
+
+        <editorActionHandler implementationClass="com.ansorgit.smarter.smartHome.SmartHomeHandler"
+                             action="SmartHome"/>
+
+        <editorActionHandler implementationClass="com.ansorgit.smarter.smartEnd.SmartEndHandler"
+                             action="SmartEnd"/>
+
+        <editorActionHandler implementationClass="com.ansorgit.smarter.smartSplit.SmartSplitHandler"
+                             action="SmartSplit"/>
+
+        <editorActionHandler implementationClass="com.ansorgit.smarter.sortSelection.SortSelectionHandler"
+                             action="SortSelection"/>
+
+        <!-- Error reporter -->
+        <errorHandler implementation="nu.studer.idea.errorreporting.PluginErrorReportSubmitter"/>
+    </extensions>
+</idea-plugin>

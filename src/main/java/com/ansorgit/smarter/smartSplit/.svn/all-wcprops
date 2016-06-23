@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/19/trunk/SmarterEditor/src/com/ansorgit/smarter/smartSplit
+END
+JavascriptSplitHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/19/trunk/SmarterEditor/src/com/ansorgit/smarter/smartSplit/JavascriptSplitHandler.java
+END
+SmartSplitHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/19/trunk/SmarterEditor/src/com/ansorgit/smarter/smartSplit/SmartSplitHandler.java
+END
+LanguageSplitHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/19/trunk/SmarterEditor/src/com/ansorgit/smarter/smartSplit/LanguageSplitHandler.java
+END
+PhpSplitHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/19/trunk/SmarterEditor/src/com/ansorgit/smarter/smartSplit/PhpSplitHandler.java
+END
+JavaSplitHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/19/trunk/SmarterEditor/src/com/ansorgit/smarter/smartSplit/JavaSplitHandler.java
+END

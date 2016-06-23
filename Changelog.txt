@@ -1,0 +1,52 @@
+2012-03-22:
+  - Javascript string splitting improved
+  - Version 0.8.3
+
+2012-03-28:
+  - Compatibility with 117 and above (IDEA 11.1 and later)
+  - Version 0.8.1
+
+2011-12-20:
+  - After a smart split the current favorite block is reformatted with the current code style.
+  - Version 0.8
+
+2011-06-13
+  - New action "select content of favorite block", currently for Java only
+  - Version 0.7
+
+2010-06-02
+  - Custom exception reporter integrated
+  - New editor action to sort the lines of the current selection
+
+2010-03-27:
+  - Version 0.6
+  - String splitting now also support the PHP language
+
+2010-03-25:
+  - Configuration user interface to choose the navigation block elements
+
+2010-03-22:
+  - Source code released under the Apache License 2.0
+
+2010-03-20:
+  - Version 0.5.1
+  - Fixed split action
+
+2010-03-17:
+  - Version 0.5
+  - Added smart split action, which splits strings
+
+2010-03-12:
+  - Version 0.4
+  - Removed dependency to ultimate edition
+  - Refactoring
+  - Support for PHP, SQL, CSS, JavaScript
+
+2010-03-07:
+  - Version 0.3
+  - Version 0.2
+  - Description updated
+  - Show the new place of the caret when the new position is outside of the currently visible area
+
+2010-03-06:
+  - Version 0.1

@@ -1,0 +1,58 @@
+/*
+ * Copyright 2010 Joachim Ansorg, mail@ansorg-it.com
+ * File: build.gradle, Class: build.gradle
+ * Last modified: 2016-05-15
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+plugins {
+    id "org.jetbrains.intellij" version "0.1.9"
+}
+
+repositories {
+    mavenCentral()
+}
+
+version = "${version}"
+
+allprojects {
+    apply plugin: 'java'
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+
+    sourceSets {
+        main {
+            java.srcDirs 'src/main/java'
+            resources.srcDir 'src/main/resources'
+        }
+    }
+
+    apply plugin: 'org.jetbrains.intellij'
+    intellij {
+        version ideaVersion
+        pluginName 'SmarterEditor'
+        // plugins 'IntelliLang'
+        downloadSources Boolean.valueOf(sources)
+        publish {
+            pluginId '4657'
+            username 'wallaby'
+            password System.properties['intellij.publish.password']
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.9'
+}

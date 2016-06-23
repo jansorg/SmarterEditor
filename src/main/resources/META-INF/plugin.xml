@@ -1,7 +1,7 @@
 <!--
   ~ Copyright 2010 Joachim Ansorg, mail@ansorg-it.com
   ~ File: plugin.xml, Class: plugin.xml
-  ~ Last modified: 2010-06-03
+  ~ Last modified: 2016-06-23
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -21,13 +21,13 @@
 
     <change-notes>
         <![CDATA[
-    <html>
+        <html>
         <b>Changes in this version:</b><br/>
         <ul>
             <li>Javascript string splitting improved</li>
         </ul>
-    </html>
-    ]]> </change-notes>
+        </html>
+        ]]> </change-notes>
 
     <description><![CDATA[
   <html>
@@ -138,7 +138,7 @@
 
     <version>0.10.0</version>
     <vendor url="http://www.ansorg-it.com/" email="mail@ansorg-it.com">Joachim Ansorg</vendor>
-    <idea-version since-build="145.0" />
+    <idea-version since-build="145.0"/>
     <category>Code Editing</category>
 
     <!-- Mark the plugin as compatible with RubyMine and other products based on the IntelliJ platform -->
@@ -146,11 +146,8 @@
 
     <application-components>
         <component>
-            <implementation-class>com.ansorgit.smarter.configuration.SmartEditorConfigurable</implementation-class>
-        </component>
-
-        <component>
-            <implementation-class>com.ansorgit.smarter.configuration.SmarterEditorSettingsComponent</implementation-class>
+            <implementation-class>com.ansorgit.smarter.configuration.SmarterEditorSettingsComponent
+            </implementation-class>
         </component>
     </application-components>
 
@@ -206,6 +203,10 @@
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable groupId="editor"
+                             instance="com.ansorgit.smarter.configuration.SmartEditorConfigurable"
+                             id="SmarterEditor" displayName="SmarterEditor"/>
+
         <editorActionHandler implementationClass="com.ansorgit.smarter.selectFavourite.SelectFavouriteHandler"
                              action="EditorSelectFavourite"/>
 

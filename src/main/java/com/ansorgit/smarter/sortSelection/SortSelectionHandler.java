@@ -1,7 +1,7 @@
 /*
  * Copyright 2010 Joachim Ansorg, mail@ansorg-it.com
  * File: SortSelectionHandler.java, Class: SortSelectionHandler
- * Last modified: 2010-06-03
+ * Last modified: 2016-06-23
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import java.util.Arrays;
 public class SortSelectionHandler extends EditorActionHandler {
     @Override
     public boolean isEnabled(Editor editor, DataContext dataContext) {
-        return editor.getSelectionModel().hasSelection() || editor.getSelectionModel().hasBlockSelection();
+        return editor.getSelectionModel().hasSelection();
     }
 
     @Override
@@ -46,6 +46,10 @@ public class SortSelectionHandler extends EditorActionHandler {
         }
 
         String selectedText = selectionModel.getSelectedText();
+        if (selectedText == null) {
+            return;
+        }
+
         String[] lines = selectedText.split("\\n");
 
         String[] sortedLines = Arrays.copyOf(lines, lines.length);

@@ -1,7 +1,7 @@
 /*
  * Copyright 2010 Joachim Ansorg, mail@ansorg-it.com
  * File: JavaSplitHandler.java, Class: JavaSplitHandler
- * Last modified: 2010-03-28
+ * Last modified: 2016-12-28
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,8 @@
 
 package com.ansorgit.smarter.smartSplit;
 
-import com.intellij.psi.JavaTokenType;
+import com.ansorgit.smarter.PsiClassname;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiJavaToken;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -29,8 +28,10 @@ import org.jetbrains.annotations.NotNull;
  * Time: 2:14:28 PM
  */
 public class JavaSplitHandler implements LanguageSplitHandler {
+    private static final PsiClassname STRING_LITERAL = PsiClassname.create("com.intellij.psi.PsiJavaToken");
+
     public boolean supportsElement(@NotNull PsiElement element) {
-        return element instanceof PsiJavaToken && ((PsiJavaToken) element).getTokenType() == JavaTokenType.STRING_LITERAL;
+        return STRING_LITERAL.isInstance(element) && element.getNode().getElementType().toString().equals("STRING_LITERAL");
     }
 
     public String getConcatOperator(@NotNull PsiElement element) {

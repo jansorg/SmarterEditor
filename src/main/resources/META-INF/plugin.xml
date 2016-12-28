@@ -1,7 +1,7 @@
 <!--
   ~ Copyright 2010 Joachim Ansorg, mail@ansorg-it.com
   ~ File: plugin.xml, Class: plugin.xml
-  ~ Last modified: 2016-06-23
+  ~ Last modified: 2016-12-28
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -24,7 +24,8 @@
         <html>
         <b>Changes in this version:</b><br/>
         <ul>
-            <li>Javascript string splitting improved</li>
+            <li>#1: Javascript tab name is misspelled</li>
+            <li>Fixed dependency on the Java plattform classes, e.g. to use SmarterEditor with PyCharm</li>
         </ul>
         </html>
         ]]> </change-notes>
@@ -136,7 +137,7 @@
   ]]>
     </description>
 
-    <version>0.10.0</version>
+    <version>0.11.0</version>
     <vendor url="http://www.ansorg-it.com/" email="mail@ansorg-it.com">Joachim Ansorg</vendor>
     <idea-version since-build="145.0"/>
     <category>Code Editing</category>

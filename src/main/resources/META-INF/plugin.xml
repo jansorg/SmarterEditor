@@ -1,7 +1,7 @@
 <!--
   ~ Copyright 2010 Joachim Ansorg, mail@ansorg-it.com
   ~ File: plugin.xml, Class: plugin.xml
-  ~ Last modified: 2016-12-28
+  ~ Last modified: 2017-07-12
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
   ~ limitations under the License.
   -->
 
-<idea-plugin version="2">
+<idea-plugin>
     <name>SmarterEditor</name>
 
     <change-notes>
@@ -24,8 +24,7 @@
         <html>
         <b>Changes in this version:</b><br/>
         <ul>
-            <li>#1: Javascript tab name is misspelled</li>
-            <li>Fixed dependency on the Java plattform classes, e.g. to use SmarterEditor with PyCharm</li>
+            <li>Updated the <a href="https://www.plugin-dev.com/project/smartereditor/" target="_blank">documentation</a></li>
         </ul>
         </html>
         ]]> </change-notes>
@@ -34,111 +33,23 @@
   <html>
     <b>Smarten up the editor with new editor actions.</b>
     <br>
-    This plugin makes you more productive in the editor. It supports some frequently used actions with the press of a key.
-    You can easily select, format and navigate in selections. And it allows to to split literals at the current position without
-    breaking your code!
+    This plugin makes you more productive with IntelliJ. It maps frequently used actions to a single shortcut. You can easily select, format and navigate in selections. And it allows to to split literals at the current position without breaking your code!
 
     <br/>
-    <br/>
-    It relies on navigation contexts. A navigation context is defined as:
-    <ul>
-      <li>Block statement: If, Switch or loops statements</li>
-      <li>Method definition</li>
-      <li>Class definition</li>
-      <li>XML tag</li>
-    </ul>
-
-    <p>This plugin saves you from unnecessary caret movements.</p>
-
-    <br><b>Supported languages:</b>
-    <ul>
-        <li>Java</li>
-        <li>JavaScript</li>
-        <li>CSS</li>
-        <li>XML</li>
-        <li>Bash (BashSupport plugin)</li>
-        <li>SQL (only certain dialects)</li>
-        <li>PHP</li>
-    </ul>
-
-    <br><b>Split the current string literal at caret or around selection</b>
-    <p>
-          Press <i>alt + PLUS</i> / Edit: Smart split. This action splits a string into two parts and positions the
-          caret between two parts.
-          For example: the string "abcd" is turned into "a" + "bc" + "d" if "bc" was selected.
-
-          <br>
-          <i>Useful examples:</i>
-          <ul>
-            <li>Working on Java code: simply split a string into two parts and enter a variable in between</li>
-          </ul>
-    </p>
-
-    <br><b>Jump to the start of a navigation block</b>
-    <p>
-          Press <i>ctrl + alt + HOME</i> / Edit: Smart home. This action moves the editor caret to the beginning of
-          the next parent navigation context.
-          <br>
-          <i>Useful examples:</i>
-          <ul>
-<li>Working on a Java loop statement: Use this action to jump to the loop beginning.</li>
-<li>Working on XML tag body: Use this action to directly jump to the tag definition. Press again to jump to the parent tag definition.</li>
-          </ul>
-    </p>
-
-    <br><b>Jump to the end of a navigation block</b>
-    <p>
-          Press <i>ctrl + alt + END</i> / Edit: Smart end. This action moves the editor caret to the end of
-          the next parent navigation context.
-
-          <br>
-          <i>Useful examples:</i>
-          <ul>
-<li>Working on a Java loop in a method: Use once to add code after the loop, press another time to move after the method to add more class level code.</li>
-<li>Working on XML tag body: Press to add another tag after the current one. Press again to move after the parent tag.</li>
-          </ul>
-    </p>
-
-
-    <br><b>Format a navigation block</b>
-    <p>
-          Press <i>ctrl + alt + shift + F</i> / Edit: Format favourite. This action reformats the next parent
-          navigation context according to the code style settings. It puts a selection on the reformatted text.
-          It can be called multiple times to reformat the next parent context.
-          <br>
-          Before you needed to press ctrl+w multiple times, then ctrl+alt+L and confirm the message box.
-
-          <br>
-          <i>Useful examples:</i>
-          <ul>
-<li>Working on a Java method: If you want to reduce whitespace changes just reformat the current method by calling this action.</li>
-<li>Working on XML tag body: Reformat the current tag and child context by calling this from anywhere on the first level below the tag.</li>
-          </ul>
-    </p>
-
-    <br><b>Select a navigation block</b>
-    <p>
-          Press <i>ctrl + alt + shift + D</i> / Edit: Select favourite. This action select the next parent
-          navigation context. It can be called multiple times to select the next parent context.
-          <br>
-          Before you needed to press ctrl+w multiple times, which works on a much finer grained model.
-
-          <br>
-          <i>Useful examples:</i>
-          <ul>
-<li>Working on a Java code: Select code on a more coarse grained model, e.g. anonymous class, then the method, then the inner class, then the outer class.</li>
-<li>Working on XML tag body: Copy all sibilings and the parent tag by calling this action twice and then <i>ctrl + c</i> </li>
-          </ul>
-    </p>
+    <img src="https://www.plugin-dev.com/images/smartereditor/intellij-plugin-intro1.gif" alt="SmarterEditor" />
+    </br>
+    <img src="https://www.plugin-dev.com/images/smartereditor/intellij-plugin-intro2.gif" alt="SmarterEditor" />
 
     <br>
     <b>This is an early release of this plugin. Please vote and provide feedback to help!</b>
+
+    <p>Documentation is available at <a href="https://www.plugin-dev.com/project/smartereditor/" target="_blank">plugin-dev.com</a>.</p>
   </html>
   ]]>
     </description>
 
-    <version>0.11.0</version>
-    <vendor url="http://www.ansorg-it.com/" email="mail@ansorg-it.com">Joachim Ansorg</vendor>
+    <version>0.12.0</version>
+    <vendor url="https://www.plugin-dev.com/" email="mail@ansorg-it.com">Joachim Ansorg</vendor>
     <idea-version since-build="145.0"/>
     <category>Code Editing</category>
 
